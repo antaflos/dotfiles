@@ -72,8 +72,6 @@ set shiftwidth=4                         "  number of spaces to use for autoinde
 set showmatch                            "  set show matching parenthesis
 set sidescrolloff=2
 set smartcase                            "  ignore case if search pattern is all lowercase, case-sensitive otherwise
-set title                                "  change the terminal's title
-set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
 set ttyfast
 set undolevels=1000                      "  use many muchos levels of undo
 set visualbell                           "  don't beep
