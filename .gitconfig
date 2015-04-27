@@ -1,0 +1,9 @@
+[user]
+	name = Andreas Ntaflos
+	email = andreas.ntaflos@rise-world.com
+[push]
+	default = simple
+[http]
+	sslVerify = true
+[core]
+	askpass = /usr/bin/ksshaskpass
