@@ -33,5 +33,4 @@
       path: .gitconfig
 
 - shell:
-  - ['git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim', Installing Vundle]
   - [git submodule update --init --recursive, Installing submodules]
