@@ -1,9 +1,11 @@
 [user]
-	name = Andreas Ntaflos
-	email = andreas.ntaflos@rise-world.com
+    name = Andreas Ntaflos
+    email = andreas.ntaflos@rise-world.com
 [push]
-	default = simple
+    default = simple
 [http]
-	sslVerify = true
+    sslVerify = true
 [core]
-	askpass = /usr/bin/ksshaskpass
+    askpass = /usr/bin/ksshaskpass
+[alias]
+    change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ $`echo $VAR` = \\\"$OLD\\\" ]]; then export $VAR=\\\"$NEW\\\"; fi\" $@; }; f"
