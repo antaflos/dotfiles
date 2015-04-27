@@ -1,0 +1,37 @@
+- clean: ['~']
+
+- link:
+    ~/.tmux.conf:
+      force: true
+      path: .tmux.conf
+    ~/.vim:
+      force: true
+      path: .vim/
+    ~/.vimrc:
+      force: true
+      path: .vimrc
+    ~/.bashrc:
+      force: true
+      path: .bashrc
+    ~/.bash_aliases:
+      force: true
+      path: .bash_aliases
+    ~/.profile:
+      force: true
+      path: .profile
+    ~/.inputrc:
+      force: true
+      path: .inputrc
+    ~/.byobu:
+      force: true
+      path: .byobu/
+    ~/.fonts:
+      force: true
+      path: .fonts/
+    ~/.gitconfig:
+      force: true
+      path: .gitconfig
+
+- shell:
+  - ['git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim', Installing Vundle]
+  - [git submodule update --init --recursive, Installing submodules]
