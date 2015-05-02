@@ -87,7 +87,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo  " Tell vim to remember certain things w
 " vim-airline customisations
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'base16'
+let g:airline_theme = 'hybridline'
 
 let g:syntastic_puppet_puppetlint_args='--no-documentation-check --no-class_inherits_from_params_class-check --no-80chars-check --relative'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'php', 'puppet', 'yaml'], }
