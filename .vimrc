@@ -6,6 +6,7 @@ call vundle#begin()
 
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'chriskempson/base16-vim'
 Plugin 'dahu/Asif'
 Plugin 'dahu/vim-asciidoc'
