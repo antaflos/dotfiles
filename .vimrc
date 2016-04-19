@@ -99,8 +99,10 @@ function! TrimWhiteSpace()
 endfunction
 
 " Restore cursor position
-autocmd BufWinLeave * mkview
-autocmd VimEnter * loadview
+augroup resCur
+    autocmd!
+    autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
 
 autocmd filetype python setl expandtab sts=4 ts=4 shiftwidth=4
 autocmd filetype ruby,eruby,yaml set ai sw=2 sts=2 et
