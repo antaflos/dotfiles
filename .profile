@@ -22,7 +22,9 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 if [ ! -z $(which keychain) ]; then
-    if [ -r ~/.ssh/id_rsa ]; then
+    if [ -r ~/.ssh/id_ed25519 ]; then
+	eval $(keychain --eval --agents ssh --nogui -Q -q id_ed25519)
+    elif [ -r ~/.ssh/id_rsa ]; then
 	eval $(keychain --eval --agents ssh --nogui -Q -q id_rsa)
     elif [ -r ~/.ssh/id_dsa ]; then
 	eval $(keychain --eval --agents ssh --nogui -Q -q id_dsa)
