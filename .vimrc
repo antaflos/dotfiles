@@ -56,6 +56,7 @@ endif
 " clear highlighted search results by ,/
 nmap <silent> ,/ :nohlsearch<CR>
 
+set modeline
 set cursorline
 set encoding=utf-8
 set fileencoding=utf-8
