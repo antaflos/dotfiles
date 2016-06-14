@@ -1,6 +1,9 @@
 - clean: ['~']
 
 - link:
+    ~/bin:
+      force: true
+      path: bin/
     ~/.dotfiles: ''
     ~/.tmux.conf:
       force: true

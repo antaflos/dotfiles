@@ -18,3 +18,11 @@
     graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
     precommit = diff --cached --diff-algorithm=minimal -w
     remotes = remote -v
+[diff]
+    compactionHeuristic = true
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
+[interactive]
+    diffFilter = diff-highlight
