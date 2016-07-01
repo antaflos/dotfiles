@@ -106,6 +106,20 @@ augroup resCur
     autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 
+augroup gzip
+    autocmd!
+    autocmd BufReadPre,FileReadPre *.gz set bin
+    autocmd BufReadPost,FileReadPost   *.gz '[,']!gunzip
+    autocmd BufReadPost,FileReadPost   *.gz set nobin
+    autocmd BufReadPost,FileReadPost   *.gz execute ":doautocmd BufReadPost " . expand("%:r")
+    autocmd BufWritePost,FileWritePost *.gz !mv <afile> <afile>:r
+    autocmd BufWritePost,FileWritePost *.gz !gzip <afile>:r
+    autocmd FileAppendPre      *.gz !gunzip <afile>
+    autocmd FileAppendPre      *.gz !mv <afile>:r <afile>
+    autocmd FileAppendPost     *.gz !mv <afile> <afile>:r
+    autocmd FileAppendPost     *.gz !gzip <afile>:r
+augroup END
+
 autocmd filetype python setl expandtab sts=4 ts=4 shiftwidth=4
 autocmd filetype ruby,eruby,yaml set ai sw=2 sts=2 et
 autocmd BufRead,BufNewFile haproxy* set ft=haproxy
