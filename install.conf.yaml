@@ -37,6 +37,6 @@
       path: .gitconfig
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+  - [git submodule -q update --init --recursive, Installing submodules]
   - mkdir -p ~/.config
   - [vim +PluginInstall +qall, Installing Vim plugins]
