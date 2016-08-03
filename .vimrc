@@ -94,7 +94,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'hybridline'
 
 let g:syntastic_puppet_puppetlint_args='--no-documentation-check --no-class_inherits_from_params_class-check --relative'
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'php', 'puppet', 'yaml'], }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'php', 'puppet', 'yaml', 'python' ], }
 
 function! TrimWhiteSpace()
   %s/\s\+$//e
@@ -120,9 +120,8 @@ augroup gzip
     autocmd FileAppendPost     *.gz !gzip <afile>:r
 augroup END
 
-autocmd filetype python setl expandtab sts=4 ts=4 shiftwidth=4
-autocmd filetype ruby,eruby,yaml set ai sw=2 sts=2 et
-autocmd BufRead,BufNewFile haproxy* set ft=haproxy
+autocmd filetype yaml set ai sw=2 sts=2 et
+autocmd BufRead,BufNewFile haproxy*.cfg* set ft=haproxy
 autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
 
 " Highlight and clear extra whitespace at the
