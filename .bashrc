@@ -5,14 +5,12 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
-HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoreboth
+if [ -f ~/bin/sensible.bash ]; then
+    source ~/bin/sensible.bash
+fi
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+export HISTTIMEFORMAT='%Y-%m-%d %H:%M.%S | '
+export HISTIGNORE="&:[ ]*:exit:bg:fg:history:clear"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 
@@ -92,10 +90,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-export HISTSIZE=1000000
-export HISTFILESIZE=1000000
-shopt -s histappend
 
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
