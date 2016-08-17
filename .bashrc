@@ -9,6 +9,7 @@ if [ -f ~/bin/sensible.bash ]; then
     source ~/bin/sensible.bash
 fi
 
+unset PROMPT_COMMAND
 export HISTTIMEFORMAT='%Y-%m-%d %H:%M.%S | '
 export HISTIGNORE="&:[ ]*:exit:bg:fg:history:clear"
 
@@ -117,3 +118,5 @@ if [ -f /usr/lib/git-core/git-sh-prompt ]; then
     PS1POST=" \[\033[00m\]\[\033[1m\]\\\$\[\033[00m\] "
     PROMPT_COMMAND=${PROMPT_COMMAND}'__git_ps1 "$PS1PRE" "$PS1POST"'
 fi
+
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
