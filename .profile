@@ -25,6 +25,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [ -d "$HOME/.rbenv/bin" ] ; then
+    PATH="$HOME/.rbenv/bin:$PATH"
+fi
+
 if [ ! -z $(which keychain) ]; then
     if [ -r ~/.ssh/id_ed25519 ]; then
 	eval $(keychain --eval --agents ssh --nogui -Q -q id_ed25519)

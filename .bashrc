@@ -120,3 +120,10 @@ if [ -f /usr/lib/git-core/git-sh-prompt ]; then
 fi
 
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+# rbenv stuff
+if [ -d "$HOME/.rbenv/bin" ] ; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+fi
+
+which rbenv && eval "$(rbenv init -)"
