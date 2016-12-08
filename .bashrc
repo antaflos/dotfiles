@@ -126,4 +126,4 @@ if [ -d "$HOME/.rbenv/bin" ] ; then
     export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
-which rbenv && eval "$(rbenv init -)"
+which rbenv >/dev/null && eval "$(rbenv init -)"
