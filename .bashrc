@@ -32,6 +32,28 @@ case "$TERM" in
     xterm-color|screen*|xterm|linux|xterm-256color) color_prompt=yes;;
 esac
 
+case "$HOSTNAME" in
+    *-prod)
+	sysmode=prod
+	;;
+    *-stg)
+	sysmode=stage
+	;;
+    *-int)
+	sysmode=stage
+	;;
+    *-dev)
+	sysmode=dev
+	;;
+    *)
+	sysmode=default
+	;;
+esac
+
+if [ "$SIMULATE_PROD" = "yes" ]; then
+    sysmode=prod
+fi
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -47,9 +69,20 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
+
 if [ "$color_prompt" = yes ]; then
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[01;34m\] [\w] \[\033[01;30m\]$(__git_ps1 "(%s) ")\[\033[00m\]\[\033[1m\]\$\[\033[00m\] '
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[01;34m\] [\w] \[\033[00m\]\[\033[1m\]\$\[\033[00m\] '
+    PS1PRE="${debian_chroot:+($debian_chroot)}\[\e[01;32m\]\u@\h\[\e[0;01;34m\] [\w]\[\e[00m\]"
+    PS1POST=" \[\e[00m\]\[\e[1m\]\\\$\[\e[00m\] "
+
+    if [ $sysmode = 'prod' ]; then
+	PS1PRE="${debian_chroot:+($debian_chroot)}\[\e[41;01;37m\]\u@\h\[\e[0;01;34m\] [\w]\[\e[00m\]"
+    elif [ $sysmode = 'stage' ]; then
+	PS1PRE="${debian_chroot:+($debian_chroot)}\[\e[43;01;37m\]\u@\h\[\e[0;01;34m\] [\w]\[\e[00m\]"
+    elif [ $sysmode = 'dev' ]; then
+	PS1PRE="${debian_chroot:+($debian_chroot)}\[\e[42;01;37m\]\u@\h\[\e[0;01;34m\] [\w]\[\e[00m\]"
+    fi
+
+    PS1="${PS1PRE}${PS1POST}"
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -99,7 +132,7 @@ export SUDO_EDITOR=/usr/bin/vim
 # Set tmux or screen window title to short hostname
 case "$TERM" in
     screen*)
-	PROMPT_COMMAND="printf '\033k${HOSTNAME}\033\\';"${PROMPT_COMMAND}
+	PROMPT_COMMAND="printf '\ek${HOSTNAME}\e\\';"${PROMPT_COMMAND}
 	;;
 esac
 
@@ -114,8 +147,6 @@ if [ -f /usr/lib/git-core/git-sh-prompt ]; then
     GIT_PS1_DESCRIBE_STYLE="branch"
     GIT_PS1_SHOWUPSTREAM="auto git"
 
-    PS1PRE="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[01;34m\] [\w]\[\033[00m\]"
-    PS1POST=" \[\033[00m\]\[\033[1m\]\\\$\[\033[00m\] "
     PROMPT_COMMAND=${PROMPT_COMMAND}'__git_ps1 "$PS1PRE" "$PS1POST"'
 fi
 
