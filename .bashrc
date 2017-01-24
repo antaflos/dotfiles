@@ -53,6 +53,12 @@ esac
 if [ "$SIMULATE_PROD" = "yes" ]; then
     sysmode=prod
 fi
+if [ "$SIMULATE_STAGE" = "yes" ]; then
+    sysmode=stage
+fi
+if [ "$SIMULATE_DEV" = "yes" ]; then
+    sysmode=dev
+fi
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -75,11 +81,16 @@ if [ "$color_prompt" = yes ]; then
     PS1POST=" \[\e[00m\]\[\e[1m\]\\\$\[\e[00m\] "
 
     if [ $sysmode = 'prod' ]; then
-	PS1PRE="${debian_chroot:+($debian_chroot)}\[\e[41;01;37m\]\u@\h\[\e[0;01;34m\] [\w]\[\e[00m\]"
+	# Red background, white text
+	PS1PRE="${debian_chroot:+($debian_chroot)}\[\e[48;5;160;38;5;015m\]\u@\h\[\e[0;01;34m\] [\w]\[\e[00m\]"
+	PS1POST=" \[\e[00m\]\[\e[1m\]\[\e[48;5;160;38;5;015m\]\\\$\[\e[00m\] "
     elif [ $sysmode = 'stage' ]; then
-	PS1PRE="${debian_chroot:+($debian_chroot)}\[\e[43;01;37m\]\u@\h\[\e[0;01;34m\] [\w]\[\e[00m\]"
+	# Yellow background, black text
+	PS1PRE="${debian_chroot:+($debian_chroot)}\[\e[48;5;226;38;5;016m\]\u@\h\[\e[0;01;34m\] [\w]\[\e[00m\]"
+	PS1POST=" \[\e[00m\]\[\e[1m\]\[\e[48;5;226;38;5;016m\]\\\$\[\e[00m\] "
     elif [ $sysmode = 'dev' ]; then
-	PS1PRE="${debian_chroot:+($debian_chroot)}\[\e[42;01;37m\]\u@\h\[\e[0;01;34m\] [\w]\[\e[00m\]"
+	# Green background, black text
+	PS1PRE="${debian_chroot:+($debian_chroot)}\[\e[48;5;034;38;5;016m\]\u@\h\[\e[0;01;34m\] [\w]\[\e[00m\]"
     fi
 
     PS1="${PS1PRE}${PS1POST}"
