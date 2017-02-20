@@ -36,10 +36,7 @@ case "$HOSTNAME" in
     *-prod)
 	sysmode=prod
 	;;
-    *-stg)
-	sysmode=stage
-	;;
-    *-int)
+    *-stg|*-uat|*-int)
 	sysmode=stage
 	;;
     *-dev)
