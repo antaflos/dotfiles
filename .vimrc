@@ -13,7 +13,6 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
-Plugin 'lervag/vimtex'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'rodjek/vim-puppet'
 Plugin 'scrooloose/syntastic'
@@ -29,6 +28,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-tbone'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-latex/vim-latex'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-perl/vim-perl'
@@ -92,6 +92,17 @@ set viminfo='10,\"100,:20,%,n~/.viminfo  " Tell vim to remember certain things w
                                          "  :20  :  up to 20 lines of command-line history will be remembered
                                          "  %    :  saves and restores the buffer list
                                          "  n... :  where to save the viminfo files
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+set iskeyword+=:
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
 
 " vim-airline customisations
 let g:airline#extensions#tabline#enabled = 1
