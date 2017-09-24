@@ -113,7 +113,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'php', 'puppet', 'yaml', 'python' ], }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'php', 'puppet', 'yaml', 'python', 'sh', 'bash' ], }
 let g:syntastic_puppet_puppetlint_args='--no-documentation-check --no-class_inherits_from_params_class-check --relative'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
