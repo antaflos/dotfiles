@@ -1,0 +1,30 @@
+#!/bin/bash
+
+usage() {
+    echo "Usage: $0 <path to key file> <path to certificate file>"
+    echo "Example: $0 ./ssl/private/example.com.key.pem ./ssl/certs/example.com.crt.pem"
+    exit 1
+}
+
+keyfile_path="$1"
+certfile_path="$2"
+
+if [[ $# -ne 2 ]];
+then
+    usage
+fi
+
+cert_modulus_md5=$(openssl x509 -noout -modulus -in $certfile_path | openssl md5)
+key_modulus_md5=$(openssl rsa -noout -modulus -in $keyfile_path | openssl md5)
+
+if [[ $cert_modulus_md5 == $key_modulus_md5 ]];
+then
+    echo "OK: key and certificate match"
+    echo "OK: MD5 of modulus: $cert_modulus_md5"
+    exit 0
+else
+    echo "NOK: key and certificate don't match"
+    echo "NOK: MD5 of modulus for $keyfile_path: $key_modulus_md5"
+    echo "NOK: MD5 of modulus for $certfile_path: $cert_modulus_md5"
+    exit 1
+fi
