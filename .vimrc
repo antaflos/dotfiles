@@ -61,7 +61,7 @@ endif
 " clear highlighted search results by ,/
 nmap <silent> ,/ :nohlsearch<CR>
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 set modeline
 set cursorline
 set encoding=utf-8
