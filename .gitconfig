@@ -21,8 +21,10 @@
 [diff]
     compactionHeuristic = true
 [pager]
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
+    log = ~/bin/diff-highlight | less -S
+    show = ~/bin/diff-highlight | less -S
+    diff = ~/bin/diff-highlight | less -S
 [interactive]
     diffFilter = diff-highlight
+[commit]
+    verbose = true
