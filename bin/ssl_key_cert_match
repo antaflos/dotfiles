@@ -1,0 +1,74 @@
+#!/bin/bash
+
+SCRIPT_NAME=${0##*/}
+
+error_exit() {
+    echo "ERROR: ${SCRIPT_NAME}: ${1:-"Unknown Error"}" 1>&2
+    exit 1
+}
+
+is_key_file() {
+    local f="$1"
+    grep -q -Pzl -- '(?s)-----BEGIN RSA PRIVATE KEY-----.*\n.*-----END RSA PRIVATE KEY-----' "$f" && return 0 || return 1
+}
+
+is_cert_file() {
+    local f="$1"
+    grep -q -Pzl -- '(?s)-----BEGIN CERTIFICATE-----.*\n.*-----END CERTIFICATE-----' "$f" && return 0 || return 1
+}
+
+file1_path="$1"
+file2_path="$2"
+
+if [[ ! -f $file1_path ]]; then
+    error_exit "File ${file1_path} doesn't seem to exist"
+fi
+if [[ ! -f $file2_path ]]; then
+    error_exit "File ${file2_path} doesn't seem to exist"
+fi
+
+if [[ $file1_path == $file2_path ]]; then
+    error_exit "Key and certificate seem to be the same file, this makes no sense"
+fi
+
+if [[ $(openssl md5 $file1_path | cut -f 2 -d ' ') == $(openssl md5 $file2_path | cut -f 2 -d ' ') ]]; then
+    error_exit "Key and certificate seem to have the same content, this makes no sense"
+fi
+
+if ( is_key_file $file1_path && is_key_file $file2_path ); then
+    error_exit "Both ${file1_path} and ${file2_path} seem to be private key PEM files, this makes no sense"
+fi
+
+if ( is_cert_file $file1_path && is_cert_file $file2_path ); then
+    error_exit "Both ${file1_path} and ${file2_path} seem to be certificate PEM files, this makes no sense"
+fi
+
+if ( is_key_file $file1_path ); then
+    keyfile_path=$file1_path
+elif ( is_cert_file $file1_path ); then
+    certfile_path=$file1_path
+else
+    error_exit "${file1_path} does not seem to be a private key or certificate in PEM format"
+fi
+
+if ( is_key_file $file2_path ); then
+    keyfile_path=$file2_path
+elif ( is_cert_file $file2_path ); then
+    certfile_path=$file2_path
+else
+    error_exit "${file2_path} does not seem to be a private key or certificate in PEM format"
+fi
+
+cert_modulus_md5=$(openssl x509 -noout -modulus -in $certfile_path | openssl md5 | cut -f 2 -d ' ')
+key_modulus_md5=$(openssl rsa -noout -modulus -in $keyfile_path | openssl md5 | cut -f 2 -d ' ')
+
+if [[ $cert_modulus_md5 == $key_modulus_md5 ]]; then
+    echo "OK: key and certificate match"
+    echo "OK: MD5 of modulus: $cert_modulus_md5"
+    exit 0
+else
+    echo "NOK: key and certificate don't match"
+    echo "NOK: MD5 of key modulus (${keyfile_path}): $key_modulus_md5"
+    echo "NOK: MD5 of certificate modulus (${certfile_path}): $cert_modulus_md5"
+    exit 1
+fi
