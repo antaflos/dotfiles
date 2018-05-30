@@ -164,7 +164,7 @@ if [ -f /usr/lib/git-core/git-sh-prompt ]; then
     PROMPT_COMMAND=${PROMPT_COMMAND}'__git_ps1 "$PS1PRE" "$PS1POST"'
 fi
 
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # rbenv stuff
 if [ -d "$HOME/.rbenv/bin" ] ; then
