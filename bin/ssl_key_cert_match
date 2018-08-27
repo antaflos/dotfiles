@@ -9,7 +9,7 @@ error_exit() {
 
 is_key_file() {
     local f="$1"
-    grep -q -Pzl -- '(?s)-----BEGIN RSA PRIVATE KEY-----.*\n.*-----END RSA PRIVATE KEY-----' "$f" && return 0 || return 1
+    grep -q -Pzl -- '(?s)-----BEGIN (RSA\s)?PRIVATE KEY-----.*\n.*-----END (RSA\s)?PRIVATE KEY-----' "$f" && return 0 || return 1
 }
 
 is_cert_file() {
