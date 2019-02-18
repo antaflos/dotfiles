@@ -5,8 +5,8 @@
     default = simple
 [http]
     sslVerify = true
-[core]
-    askpass = /usr/bin/ksshaskpass
+; [core]
+;     askpass = /usr/bin/ksshaskpass
 [alias]
     branches = branch -a
     tags = tag
@@ -29,3 +29,5 @@
     diffFilter = diff-highlight
 [commit]
     verbose = true
+[credential]
+    helper = cache --timeout=3600
