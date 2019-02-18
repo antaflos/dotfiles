@@ -29,12 +29,14 @@ if [ -d "$HOME/.rbenv/bin" ] ; then
     PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
-if [ ! -z $(which keychain) ]; then
-    if [ -r ~/.ssh/id_ed25519 ]; then
-	eval $(keychain --eval --agents ssh --nogui -Q -q id_ed25519)
-    elif [ -r ~/.ssh/id_rsa ]; then
-	eval $(keychain --eval --agents ssh --nogui -Q -q id_rsa)
-    elif [ -r ~/.ssh/id_dsa ]; then
-	eval $(keychain --eval --agents ssh --nogui -Q -q id_dsa)
+tty -s;
+if [ "0" == "$?" ]; then
+    if [ ! -z $(which keychain) ]; then
+	if [ -r ~/.ssh/id_ed25519 ]; then
+	    eval $(keychain --eval --agents ssh -Q -q id_ed25519)
+	    #eval $(keychain --eval --agents ssh --nogui -Q -q id_ed25519)
+	elif [ -r ~/.ssh/id_rsa ]; then
+	    eval $(keychain --eval --agents ssh -Q -q id_rsa)
+	fi
     fi
 fi
