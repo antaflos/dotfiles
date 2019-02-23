@@ -75,7 +75,7 @@ set incsearch                            "  show search matches as you type
 set infercase
 set noerrorbells                         "  don't beep
 set noshowmode
-set noswapfile
+" set noswapfile
 set ruler
 set scrolloff=2
 set shiftround                           "  use multiple of shiftwidth when indenting with '<' and '>'
