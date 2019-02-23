@@ -95,6 +95,21 @@ set viminfo='10,\"100,:20,%,n~/.viminfo  " Tell vim to remember certain things w
                                          "  %    :  saves and restores the buffer list
                                          "  n... :  where to save the viminfo files
 
+" undo stuff taken from https://stackoverflow.com/a/22676189/157108
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
+
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
@@ -123,6 +138,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_yaml_checkers = [ 'yamlxs', 'yamllint' ]
+let g:syntastic_rst_checkers = ['sphinx']
 
 
 function! TrimWhiteSpace()
