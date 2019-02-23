@@ -4,3 +4,5 @@
 !.gitignore
 .ssh-agent
 .fonts/fonts.dir
+.vim/undodir/
+.uuid
