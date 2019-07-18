@@ -1,43 +1,43 @@
 ---
 - clean: ['~']
 - link:
-  ~/bin:
-    force: true
-    path: bin/
-  ~/.dotfiles: ''
-  ~/.tmux.conf:
-    force: true
-    path: .tmux.conf
-  ~/.vim:
-    force: true
-    path: .vim/
-  ~/.vimrc:
-    force: true
-    path: .vimrc
-  ~/.bashrc:
-    force: true
-    path: .bashrc
-  ~/.bash_aliases:
-    force: true
-    path: .bash_aliases
-  ~/.profile:
-    force: true
-    path: .profile
-  ~/.inputrc:
-    force: true
-    path: .inputrc
-  ~/.byobu:
-    force: true
-    path: .byobu/
-  ~/.fonts:
-    force: true
-    path: .fonts/
-  ~/.gitconfig:
-    force: true
-    path: .gitconfig
+    ~/bin:
+      force: true
+      path: bin/
+    ~/.dotfiles: ''
+    ~/.tmux.conf:
+      force: true
+      path: .tmux.conf
+    ~/.vim:
+      force: true
+      path: .vim/
+    ~/.vimrc:
+      force: true
+      path: .vimrc
+    ~/.bashrc:
+      force: true
+      path: .bashrc
+    ~/.bash_aliases:
+      force: true
+      path: .bash_aliases
+    ~/.profile:
+      force: true
+      path: .profile
+    ~/.inputrc:
+      force: true
+      path: .inputrc
+    ~/.byobu:
+      force: true
+      path: .byobu/
+    ~/.fonts:
+      force: true
+      path: .fonts/
+    ~/.gitconfig:
+      force: true
+      path: .gitconfig
 - shell:
-  - touch ~/.bash_history
-  - touch ~/.lesshst
-  - [git submodule -q update --init --recursive, Installing submodules]
-  - mkdir -p ~/.config
-  - [vim +PluginInstall +qall, Installing Vim plugins]
+    - touch ~/.bash_history
+    - touch ~/.lesshst
+    - [git submodule -q update --init --recursive, Installing submodules]
+    - mkdir -p ~/.config
+    - [vim +PluginInstall +qall, Installing Vim plugins]
