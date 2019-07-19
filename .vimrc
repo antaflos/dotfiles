@@ -16,6 +16,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'noprompt/vim-yardoc'
 Plugin 'rodjek/vim-puppet'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomtom/tlib_vim'
@@ -63,6 +64,9 @@ endif
 
 " clear highlighted search results by ,/
 nmap <silent> ,/ :nohlsearch<CR>
+
+" Toggle nerdtree
+map <C-k> :NERDTreeToggle<CR>
 
 set clipboard=unnamedplus
 set modeline
