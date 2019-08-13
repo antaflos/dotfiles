@@ -187,4 +187,8 @@ fi
 # Go stuff
 export GOPATH="$HOME/go"
 
+if [ -d "$HOME/go/bin" ] ; then
+    export PATH="$HOME/go/bin:$PATH"
+fi
+
 which rbenv >/dev/null && eval "$(rbenv init -)"
