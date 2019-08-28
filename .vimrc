@@ -145,6 +145,7 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_yaml_checkers = [ 'yamlxs', 'yamllint' ]
 let g:syntastic_rst_checkers = ['sphinx']
 
+let g:go_version_warning = 0
 
 function! TrimWhiteSpace()
   %s/\s\+$//e
