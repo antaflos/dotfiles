@@ -94,6 +94,9 @@ set undolevels=1000                      "  use many muchos levels of undo
 set visualbell                           "  don't beep
 set whichwrap+=<,>,[,]
 set wildignore=*.swp,*.bak,*.pyc,*.class
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set showbreak=↪\
+"set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set viminfo='10,\"100,:20,%,n~/.viminfo  " Tell vim to remember certain things when we exit
                                          "  '10  :  marks will be remembered for up to 10 previously edited files
                                          "  "100 :  will save up to 100 lines for each register
