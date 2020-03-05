@@ -179,6 +179,7 @@ augroup END
 autocmd filetype yaml set ai sw=2 sts=2 et
 autocmd BufRead,BufNewFile haproxy*.cfg* set ft=haproxy
 autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
+autocmd FileType haproxy setlocal commentstring=#\ %s
 
 " Highlight and clear extra whitespace at the
 highlight ExtraWhitespace ctermbg=red guibg=red
