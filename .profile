@@ -40,3 +40,4 @@ if [ "0" == "$?" ]; then
 	fi
     fi
 fi
+PATH="/usr/games:$PATH"
