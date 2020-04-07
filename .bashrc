@@ -191,4 +191,4 @@ if [ -d "$HOME/go/bin" ] ; then
     export PATH="$HOME/go/bin:$PATH"
 fi
 
-which rbenv >/dev/null && eval "$(rbenv init -)"
+which rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
