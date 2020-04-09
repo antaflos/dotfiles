@@ -10,7 +10,6 @@ Plugin 'dahu/Asif'
 Plugin 'dahu/vim-asciidoc'
 Plugin 'dahu/vimple'
 Plugin 'davewongillies/vim-eyaml'
-Plugin 'fatih/vim-go'
 Plugin 'garbas/vim-snipmate'
 Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
@@ -149,8 +148,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_yaml_checkers = [ 'yamlxs', 'yamllint' ]
 let g:syntastic_rst_checkers = ['sphinx']
-
-let g:go_version_warning = 0
 
 function! TrimWhiteSpace()
   %s/\s\+$//e
