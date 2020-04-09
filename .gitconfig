@@ -31,3 +31,5 @@
     verbose = true
 [credential]
     helper = cache --timeout=3600
+[color]
+    ui = auto
