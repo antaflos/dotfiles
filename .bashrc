@@ -179,6 +179,12 @@ if [ -f $git_sh_prompt ]; then
     PROMPT_COMMAND=${PROMPT_COMMAND}'__git_ps1 "$PS1PRE" "$PS1POST"'
 fi
 
+# On CentOS apparently we need to do this explicitly
+if [ -f /etc/bash_completion.d/git ] && ! shopt -oq posix; then
+    . /etc/bash_completion.d/git
+fi
+
+
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # rbenv stuff
