@@ -161,8 +161,14 @@ esac
 
 # Load the git-sh-prompt library functions if available and
 # set various useful variables for displaying Git status.
-if [ -f /usr/lib/git-core/git-sh-prompt ]; then
-    . /usr/lib/git-core/git-sh-prompt
+git_sh_prompt=/usr/lib/git-core/git-sh-prompt
+# On CentOS this is the path to the git-sh-prompt script
+if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh]; then
+    git_sh_prompt=/usr/share/git-core/contrib/completion/git-prompt.sh
+fi
+
+if [ -f $git_sh_prompt ]; then
+    . $git_sh_prompt
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
