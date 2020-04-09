@@ -163,7 +163,7 @@ esac
 # set various useful variables for displaying Git status.
 git_sh_prompt=/usr/lib/git-core/git-sh-prompt
 # On CentOS this is the path to the git-sh-prompt script
-if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh]; then
+if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
     git_sh_prompt=/usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
