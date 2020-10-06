@@ -9,7 +9,7 @@ error_exit() {
 
 is_key_file() {
     local f="$1"
-    grep -q -Pzl -- '(?s)-----BEGIN (RSA\s)?PRIVATE KEY-----.*\n.*-----END (RSA\s)?PRIVATE KEY-----' "$f" && return 0 || return 1
+    grep -q -Pzl -- '(?s)-----BEGIN ((EC|RSA)\s)?PRIVATE KEY-----.*\n.*-----END ((EC|RSA)\s)?PRIVATE KEY-----' "$f" && return 0 || return 1
 }
 
 is_cert_file() {
@@ -59,16 +59,16 @@ else
     error_exit "${file2_path} does not seem to be a private key or certificate in PEM format"
 fi
 
-cert_modulus_md5=$(openssl x509 -noout -modulus -in $certfile_path | openssl md5 | cut -f 2 -d ' ')
-key_modulus_md5=$(openssl rsa -noout -modulus -in $keyfile_path | openssl md5 | cut -f 2 -d ' ')
+cert_pubkey_md5=$(openssl x509 -noout -pubkey -in $certfile_path | openssl md5 | cut -f 2 -d ' ')
+key_pubkey_md5=$(openssl pkey -pubout -in $keyfile_path | openssl md5 | cut -f 2 -d ' ')
 
-if [[ $cert_modulus_md5 == $key_modulus_md5 ]]; then
-    echo "OK: key and certificate match"
-    echo "OK: MD5 of modulus: $cert_modulus_md5"
+if [[ $cert_pubkey_md5 == $key_pubkey_md5 ]]; then
+    echo "OK: private key and certificate match"
+    echo "OK: MD5 of public key: $cert_pubkey_md5"
     exit 0
 else
-    echo "NOK: key and certificate don't match"
-    echo "NOK: MD5 of key modulus (${keyfile_path}): $key_modulus_md5"
-    echo "NOK: MD5 of certificate modulus (${certfile_path}): $cert_modulus_md5"
+    echo "NOK: private key and certificate don't match"
+    echo "NOK: MD5 of public key derived from private key (${keyfile_path}): $key_pubkey_md5"
+    echo "NOK: MD5 of public key in certificate (${certfile_path}): $cert_pubkey_md5"
     exit 1
 fi
