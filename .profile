@@ -31,7 +31,7 @@ fi
 
 tty -s;
 if [ "0" == "$?" ]; then
-    if [ ! -z $(which keychain) ]; then
+    if [ ! -z $(which keychain 2>/dev/null) ]; then
 	if [ -r ~/.ssh/id_ed25519 ]; then
 	    eval $(keychain --eval --agents ssh -Q -q id_ed25519)
 	    #eval $(keychain --eval --agents ssh --nogui -Q -q id_ed25519)
