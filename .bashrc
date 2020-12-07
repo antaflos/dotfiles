@@ -33,7 +33,7 @@ case "$TERM" in
 esac
 
 case "$HOSTNAME" in
-    *-prod-rz* | *-prod)
+    *-prod-rz* | *-prod | *-prod-* )
 	sysmode=prod
 	;;
     *-test-rz* | *kimltu* | *-stg | *-uat | *-test | *-int)
