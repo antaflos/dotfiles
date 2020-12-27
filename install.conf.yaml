@@ -35,6 +35,9 @@
     ~/.gitconfig:
       force: true
       path: .gitconfig
+    ~/.local/share/bash-completion:
+      create: true
+      path: bash-completion
 - shell:
     - touch ~/.bash_history
     - touch ~/.lesshst
