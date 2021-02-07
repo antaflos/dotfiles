@@ -189,3 +189,4 @@ if [ -d "$HOME/go/bin" ] ; then
 fi
 
 which rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
+which starship >/dev/null 2>&1 && eval "$(starship init bash)"
