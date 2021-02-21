@@ -150,6 +150,8 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_yaml_checkers = [ 'yamlxs', 'yamllint' ]
 let g:syntastic_rst_checkers = ['sphinx']
 
+let g:snipMate = { 'snippet_version' : 1 }
+
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
