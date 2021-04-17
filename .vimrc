@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'arouene/vim-ansible-vault'
 Plugin 'chriskempson/base16-vim'
 Plugin 'dahu/Asif'
 Plugin 'dahu/vim-asciidoc'
