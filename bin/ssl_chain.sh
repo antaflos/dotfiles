@@ -14,11 +14,11 @@ fi
 
 awk -F'\n' '
         BEGIN {
-            showcert = "openssl x509 -noout -subject -issuer"
+            showcert = "openssl x509 -noout -subject -issuer -subject_hash -issuer_hash"
         }
 
         /-----BEGIN CERTIFICATE-----/ {
-            printf "%2d: ", ind
+            printf "%2d:\n", ind
         }
 
         {
