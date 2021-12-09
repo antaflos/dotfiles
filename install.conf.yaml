@@ -44,4 +44,5 @@
     - touch ~/.lesshst
     - [git submodule -q update --init --recursive, Installing submodules]
     - mkdir -p ~/.config
-    - [vim +PluginInstall +qall, Installing Vim plugins]
+    - [vim +PlugUpdate, Installing or updating Vim plugins]
+    - [vim +PlugClean!, Clean up removed Vim plugins]
