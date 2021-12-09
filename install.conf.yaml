@@ -45,12 +45,12 @@
     - [git submodule -q update --init --recursive, Installing submodules]
     - mkdir -p ~/.config
     - description: Installing or updating Vim plugins
-      command: vim +PlugUpdate +qall
+      command: vim +PlugUpdate +qall &>/dev/null
       stdin: true
       stderr: true
       stdout: true
     - description: Cleaning up removed Vim plugins
-      command: vim +'PlugClean!' +qall
+      command: vim +'PlugClean!' +qall &>/dev/null
       stdin: true
       stderr: true
       stdout: true
