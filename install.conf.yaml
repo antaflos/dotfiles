@@ -44,5 +44,13 @@
     - touch ~/.lesshst
     - [git submodule -q update --init --recursive, Installing submodules]
     - mkdir -p ~/.config
-    - [vim +PlugUpdate, Installing or updating Vim plugins]
-    - [vim +PlugClean!, Clean up removed Vim plugins]
+    - description: Installing or updating Vim plugins
+      command: vim +PlugUpdate +qall
+      stdin: true
+      stderr: true
+      stdout: true
+    - description: Cleaning up removed Vim plugins
+      command: vim +'PlugClean!' +qall
+      stdin: true
+      stderr: true
+      stdout: true
