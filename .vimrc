@@ -129,6 +129,10 @@ set iskeyword+=:
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
+" VimTeX
+let g:vimtex_compiler_method = 'latexmk'
+let maplocalleader = "´"
+
 " vim-airline customisations
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
