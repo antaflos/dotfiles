@@ -6,3 +6,4 @@
 set show-all-if-ambiguous on
 set completion-ignore-case on
 set completion-query-items 10000
+set enable-bracketed-paste on
