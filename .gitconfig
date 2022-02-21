@@ -34,7 +34,7 @@
 [color]
     ui = auto
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
