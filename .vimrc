@@ -20,7 +20,7 @@ Plug 'noprompt/vim-yardoc'
 Plug 'rodjek/vim-puppet'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips', { 'commit': '53c2333bee77720e7f30edcdef51341e26152717' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-abolish'
