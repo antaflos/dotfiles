@@ -33,7 +33,7 @@ case "$TERM" in
 esac
 
 case "$HOSTNAME" in
-    *-prod-rz* | *-prod | *-prod-* )
+    *-prod-rz* | *-prod | *-prod-* | *-pu-*)
 	sysmode=prod
 	;;
     *-test-rz* | *kimltu* | *-stg | *-uat | *-test | *-int)
@@ -190,3 +190,4 @@ fi
 
 which rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 # which starship >/dev/null 2>&1 && eval "$(starship init bash)"
+. "/home/ant/.acme.sh/acme.sh.env"
