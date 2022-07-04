@@ -191,5 +191,5 @@ fi
 which rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 # which starship >/dev/null 2>&1 && eval "$(starship init bash)"
 if [ -f ~/.acme.sh/acme.sh.env ]; then
-    . "~/.acme.sh/acme.sh.env"
+    . ~/.acme.sh/acme.sh.env
 fi
