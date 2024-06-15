@@ -10,7 +10,6 @@ Plug 'dahu/Asif'
 Plug 'dahu/vim-asciidoc'
 Plug 'dahu/vimple'
 Plug 'davewongillies/vim-eyaml'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'garbas/vim-snipmate'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular'
