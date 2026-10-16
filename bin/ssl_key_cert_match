@@ -63,7 +63,7 @@ cert_pubkey_md5=$(openssl x509 -noout -pubkey -in $certfile_path | openssl md5 |
 key_pubkey_md5=$(openssl pkey -pubout -in $keyfile_path | openssl md5 | cut -f 2 -d ' ')
 
 if [[ $cert_pubkey_md5 == $key_pubkey_md5 ]]; then
-    echo "OK: private key and certificate match"
+    echo "OK: private key (${keyfile_path}) and certificate (${certfile_path}) match"
     echo "OK: MD5 of public key: $cert_pubkey_md5"
     exit 0
 else
